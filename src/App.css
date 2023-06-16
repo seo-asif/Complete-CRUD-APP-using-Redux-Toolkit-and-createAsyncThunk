@@ -1,0 +1,8 @@
+.app {
+  text-align: center;
+  background: rgb(230, 230, 230);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}

@@ -1,4 +1,4 @@
-# CRUD App with createAsyncThunk and Redux Toolkit
+### CRUD App with createAsyncThunk and Redux Toolkit
 
 This repository contains a CRUD (Create, Read, Update, Delete) application built using createAsyncThunk and Redux Toolkit. The application interacts with a RESTful API to perform the CRUD operations.
 
