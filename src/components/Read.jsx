@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showUser } from "../features/userDetailsSlice";
+import { deleteUser, showUser } from "../features/userDetailsSlice";
 import CustomModal from "./CustomModal";
 
 const Read = () => {
@@ -16,7 +16,7 @@ const Read = () => {
   if (loading) {
     return (
       <div className="vh-100 ">
-        <p className="align-middle">Loading...</p>;
+        <p className="align-middle">Loading...</p>
       </div>
     );
   }
@@ -56,7 +56,10 @@ const Read = () => {
                 <button className="card-link btn btn-outline-success btn-sm ">
                   Edit
                 </button>
-                <button className="card-link btn btn-outline-danger btn-sm ">
+                <button
+                  className="card-link btn btn-outline-danger btn-sm "
+                  onClick={() => dispatch(deleteUser(element.id))}
+                >
                   Delete
                 </button>
               </div>
