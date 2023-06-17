@@ -11,6 +11,11 @@ const CustomModal = ({ id, setShowPopup }) => {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
+        <img
+          className=" modal-image"
+          src="https://image.pngaaa.com/419/263419-middle.png"
+          alt=""
+        />
         <h2>{singleUser[0].name}</h2>
         <p>Email: {singleUser[0].email}</p>
         <p>Gender: {singleUser[0].gender}</p>

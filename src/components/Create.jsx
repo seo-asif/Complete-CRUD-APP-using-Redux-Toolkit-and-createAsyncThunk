@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../features/userDetailsSlice";
+import { createUser } from "../features/createAction";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {

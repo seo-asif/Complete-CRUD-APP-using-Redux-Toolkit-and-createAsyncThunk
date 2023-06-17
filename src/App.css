@@ -49,3 +49,11 @@ a:hover {
   text-decoration: none;
   color: white;
 }
+
+.modal-image {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
