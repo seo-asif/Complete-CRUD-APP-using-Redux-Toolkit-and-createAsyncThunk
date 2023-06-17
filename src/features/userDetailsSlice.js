@@ -27,9 +27,21 @@ const POST_URL = "https://648c3b3f8620b8bae7ec8260.mockapi.io/crud";
 //   }
 // });
 
+// create User
 export const createUser = createAsyncThunk("createUser", async (data) => {
   try {
     const response = await axios.post(POST_URL, data);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    return isRejectedWithValue(error.response);
+  }
+});
+
+// read User
+export const showUser = createAsyncThunk("showUser", async (data) => {
+  try {
+    const response = await axios.get(POST_URL, data);
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -49,7 +61,7 @@ export const userDetail = createSlice({
   //     state.users = [...state.users, action.payload];
   //   },
   // },
-  extrareducers: {
+  extraReducers: {
     [createUser.pending]: (state, action) => {
       state.loading = true;
     },
@@ -59,6 +71,18 @@ export const userDetail = createSlice({
     },
     [createUser.rejected]: (state, action) => {
       state.loading = false;
+      state.users = action.payload;
+    },
+    [showUser.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [showUser.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+      console.log(state.users);
+    },
+    [showUser.rejected]: (state, action) => {
+      state.loading = true;
       state.users = action.payload;
     },
   },
