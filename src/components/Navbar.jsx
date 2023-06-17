@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { searchUser } from "../features/userDetailsSlice";
 
 const Navbar = () => {
   const allUsers = useSelector((state) => state.app.users);
   const dispatch = useDispatch();
+  const location = useLocation();
   const [searchData, setSearchData] = useState("");
 
   useEffect(() => {
     dispatch(searchUser(searchData));
   }, [searchData]);
 
+  const isSearchDisabled = location.pathname !== "/read";
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid ">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
+        <div className="container">
           <Link to="/" className="navbar-brand ">
             Redux CRUD APP
           </Link>
@@ -52,16 +54,16 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-
-            <div className="flex">
-              <input
-                className="form-control me-2 "
-                type="search"
-                placeholder="Search User By name"
-                aria-label="Search"
-                onChange={(e) => setSearchData(e.target.value)}
-              />
-            </div>
+          </div>
+          <div className="flex desktop-only">
+            <input
+              className="form-control me-2 "
+              type="search"
+              placeholder="Search User By name"
+              aria-label="Search"
+              onChange={(e) => setSearchData(e.target.value)}
+              disabled={isSearchDisabled}
+            />
           </div>
         </div>
       </nav>

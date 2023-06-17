@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, showUser } from "../features/createAction";
 import CustomModal from "./CustomModal";
 import { Link } from "react-router-dom";
+import { searchUser } from "../features/userDetailsSlice";
 
 const Read = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,12 @@ const Read = () => {
   const [radioData, setRadioData] = useState("");
 
   const [id, setId] = useState();
+
+  const [searchDatap, setSearchData] = useState("");
+
+  useEffect(() => {
+    dispatch(searchUser(searchDatap));
+  }, [searchDatap]);
 
   useEffect(() => {
     dispatch(showUser());
@@ -39,7 +46,13 @@ const Read = () => {
           setShowPopup={setShowPopup}
         />
       )}
-
+      <input
+        className="form-control  mobile-only "
+        type="search"
+        placeholder="Search User By name"
+        aria-label="Search"
+        onChange={(e) => setSearchData(e.target.value)}
+      />
       <h2 className="py-3">All User</h2>
       <input
         class="form-check-input mx-1"
