@@ -6,3 +6,24 @@
 .form-control:focus {
   box-shadow: none;
 }
+
+.read-class {
+  width: 320px;
+}
+
+.double-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.double-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+}
+
+.double-underline:hover::after {
+  border-bottom: 4px solid rgba(10, 157, 255, 0.625);
+}

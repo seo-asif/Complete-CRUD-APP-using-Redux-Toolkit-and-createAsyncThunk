@@ -1,53 +1,64 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showUser } from "../features/userDetailsSlice";
+import CustomModal from "./CustomModal";
 
 const Read = () => {
   const dispatch = useDispatch();
 
   const { users, loading } = useSelector((state) => state.app);
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [id, setId] = useState();
   useEffect(() => {
     dispatch(showUser());
   }, []);
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="vh-100 ">
+        <p className="align-middle">Loading...</p>;
+      </div>
+    );
   }
 
-  // return (
-  //   <div>
-  //     {users &&
-  //       users.map((ele) => (
-  //         <div key={ele.id} className="card w-50 mx-auto my-2">
-  //           <div className="card-body">
-  //             <h5 className="card-title">{ele.name}</h5>
-  //             <h6 className="card-subtitle mb-2 text-muted">{ele.email}</h6>
-  //             <p className="card-text">{ele.gender}</p>
-  //           </div>
-  //         </div>
-  //       ))}
-  //   </div>
-  // );
+  const openModal = (elementId) => {
+    setId(elementId);
+    setShowPopup(true);
+  };
 
   return (
     <div>
-      <h2>All User</h2>
-      <div className="d-flex mx-5 justify-content-center gap-3 flex-wrap">
+      {showPopup && (
+        <CustomModal
+          id={id}
+          showPopup={showPopup}
+          setShowPopup={setShowPopup}
+        />
+      )}
+      <h2 className="py-3">All User</h2>
+      <div className="d-flex mx-5 justify-content-center gap-3 flex-wrap pb-5">
         {users &&
           users.map((element) => (
-            <div className="card w-25" key={element.id}>
-              <div className="card-body">
-                <h5 className="card-title">{element.name}</h5>
-                <p className="card-text">{element.email}</p>
-                <p className="card-text">{element.age}</p>
-                <p className="card-text">{element.gender}</p>
-                <a href="#" className="card-link">
-                  edit
-                </a>
-                <a href="#" className="card-link">
-                  delete
-                </a>
+            <div className="card  read-class" key={element.id}>
+              <h5 className="card-title mt-3">{element.name}</h5>
+              <div className="card-body ">
+                <p className="card-text text-left">Email: {element.email}</p>
+                <p className="card-text text-left">Gender: {element.gender}</p>
+              </div>
+              <div className="mb-3">
+                <button
+                  className="card-link btn btn-outline-primary btn-sm "
+                  onClick={() => openModal(element.id)}
+                >
+                  View
+                </button>
+
+                <button className="card-link btn btn-outline-success btn-sm ">
+                  Edit
+                </button>
+                <button className="card-link btn btn-outline-danger btn-sm ">
+                  Delete
+                </button>
               </div>
             </div>
           ))}

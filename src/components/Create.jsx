@@ -41,6 +41,7 @@ const Create = () => {
             type="email"
             name="email"
             className="form-control rounded"
+            placeholder="Enter Email"
             onChange={getUserData}
             required
           />
@@ -50,6 +51,7 @@ const Create = () => {
           <input
             type="text"
             name="age"
+            placeholder="Enter Age"
             className="form-control rounded"
             onChange={getUserData}
             required
