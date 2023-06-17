@@ -2,9 +2,9 @@ import React from "react";
 
 const Welcome = () => {
   return (
-    <div className="px-5 mt-5 mb-2 text-start ">
-      <h1>Welcome to My CRUD Application!</h1>
-      <p className="text-start pe-5 mt-2">
+    <div className="px-5 mt-5 pb-5 text-start container">
+      <h1 className="text-center">Welcome to My CRUD Application!</h1>
+      <p className="mt-5">
         My CRUD (Create, Read, Update, Delete, Search) Application is a powerful
         and user-friendly tool that allows you to manage and manipulate data
         effortlessly. Built with React and powered by Bootstrap 5. My
@@ -36,7 +36,7 @@ const Welcome = () => {
           <span className="fw-bold">Delete: </span> Remove unwanted or outdated
           data entries effortlessly.
         </li>
-        <li className="py-2">
+        <li className="py-2 mb-5">
           <span className="fw-bold">Search: </span> Search data entries
           effortlessly.
         </li>
