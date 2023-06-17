@@ -8,7 +8,7 @@
 }
 
 .read-class {
-  width: 320px;
+  width: 335px;
 }
 
 .double-underline {
@@ -26,4 +26,26 @@
 
 .double-underline:hover::after {
   border-bottom: 4px solid rgba(10, 157, 255, 0.625);
+}
+
+@media (max-width: 767px) {
+  .mobile-only {
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 90%;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+.link-class {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: white;
 }

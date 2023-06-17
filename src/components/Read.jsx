@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, showUser } from "../features/userDetailsSlice";
 import CustomModal from "./CustomModal";
+import { Link } from "react-router-dom";
 
 const Read = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,12 @@ const Read = () => {
           setShowPopup={setShowPopup}
         />
       )}
+      <input
+        className="form-control  mobile-only"
+        type="search"
+        placeholder="Search User"
+        aria-label="Search"
+      />
       <h2 className="py-3">All User</h2>
       <div className="d-flex mx-5 justify-content-center gap-3 flex-wrap pb-5">
         {users &&
@@ -54,7 +61,7 @@ const Read = () => {
                 </button>
 
                 <button className="card-link btn btn-outline-success btn-sm ">
-                  Edit
+                  <Link to={`/edit/${element.id}`} className="link-class"> Edit</Link>
                 </button>
                 <button
                   className="card-link btn btn-outline-danger btn-sm "

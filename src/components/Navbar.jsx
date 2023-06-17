@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid ">
+        <div className="container-fluid mx-lg-5 mx-sm-3">
           <h4 className="navbar-brand mt-2">
             <Link to="/" className="nav-link ">
               Redux CRUD APP
